@@ -41,7 +41,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -52,14 +52,6 @@
         .nav-links li { margin-left: 30px; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary-purple); }
-
-        /* Hamburger Menu Icon */
-        .menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-purple);
-        }
 
         /* --- HOME SECTION --- */
         #home {
@@ -99,6 +91,7 @@
             to { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
         }
 
+        /* Video Section Below Home */
         .home-lower {
             display: flex;
             align-items: center;
@@ -228,46 +221,14 @@
         /* --- FOOTER --- */
         footer { padding: 30px; text-align: center; background: #2d3436; color: white; }
 
-        /* --- RESPONSIVE SETTINGS --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
+            .home-text { text-align: center; }
+            .home-img { justify-content: center; margin-top: 40px; }
+            .home-learn { text-align: center; margin-top: 30px; }
+            .home-text h1 { font-size: 2.5rem; }
             nav { padding: 15px 5%; }
-            
-            .menu-btn { display: block; z-index: 1001; }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: 0.5s;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active { right: 0; }
-            .nav-links li { margin: 20px 0; margin-left: 0; }
-            .nav-links a { font-size: 1.2rem; }
-
-            #home { padding: 100px 5% 50px; }
-            .home-text { text-align: center; order: 2; }
-            .home-img { justify-content: center; margin-bottom: 40px; order: 1; }
-            .home-text h1 { font-size: 2.2rem; }
-            .profile-blob { width: 280px; height: 280px; }
-
-            .home-lower { flex-direction: column; gap: 20px; }
-            .home-video { min-width: 100%; }
-            .home-learn { text-align: center; }
-
-            #services, #projects, #contact { padding: 60px 5%; }
-            .services-grid { grid-template-columns: 1fr; }
-            .project-grid { grid-template-columns: 1fr; }
-            
-            .contact-box { padding: 40px 20px; }
-            .contact-box h2 { font-size: 1.5rem; }
+            .nav-links { display: none; } /* Pwede mong dagdagan ng hamburger menu JS */
         }
     </style>
 </head>
@@ -275,12 +236,7 @@
 
     <nav>
         <div class="logo">HAZEL ESPINO</div>
-        
-        <div class="menu-btn" id="menuBtn">
-            <i class="fas fa-bars"></i>
-        </div>
-
-        <ul class="nav-links" id="navLinks">
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -296,7 +252,7 @@
             </div>
             <div class="home-img" data-aos="fade-left">
                 <div class="profile-blob">
-                    <img src="assets/profile.jpg" alt="Profile">
+                    <img src="assets\profile.jpg" alt="Profile">
                 </div>
             </div>
         </div>
@@ -306,7 +262,7 @@
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="home-learn" data-aos="fade-left">
-                <a href="#services" class="learn-btn">Learn more about my work <i class="fas fa-arrow-down"></i></a>
+                <a href="#" class="learn-btn">Click to learn more about who I am <i class="fas fa-arrow-down"></i></a>
             </div>
         </div>
     </section>
@@ -344,6 +300,21 @@
                 <h3>Customer Service</h3>
                 <p>Providing top-tier support via chat and email.</p>
             </div>
+            <div class="service-card" data-aos="flip-left">
+                <i class="fas fa-search"></i>
+                <h3>Attention to Detail</h3>
+                <p>Ensuring quality and error-free work every time.</p>
+            </div>
+            <div class="service-card" data-aos="flip-left" data-aos-delay="100">
+                <i class="fas fa-clock"></i>
+                <h3>Time Management</h3>
+                <p>Meeting deadlines with efficient work habits.</p>
+            </div>
+            <div class="service-card" data-aos="flip-left" data-aos-delay="200">
+                <i class="fas fa-comments"></i>
+                <h3>Communication</h3>
+                <p>Clear, professional, and consistent reporting.</p>
+            </div>
         </div>
     </section>
 
@@ -355,7 +326,7 @@
                     <div class="project-tags"><span class="tag">PDF</span><span class="tag">Admin</span></div>
                     <h3>Case Study Report</h3>
                     <p>A detailed administrative report showcasing research and documentation skills.</p>
-                    <a href="#" class="file-btn"><i class="fas fa-file-pdf"></i> View Sample</a>
+                    <a href="your-file.pdf" class="file-btn"><i class="fas fa-file-pdf"></i> View Sample PDF</a>
                 </div>
             </div>
             <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
@@ -363,7 +334,15 @@
                     <div class="project-tags"><span class="tag">CSV</span><span class="tag">Data</span></div>
                     <h3>Inventory Management</h3>
                     <p>Organized inventory sheet with clean data entry and automated formulas.</p>
-                    <a href="#" class="file-btn"><i class="fas fa-file-csv"></i> Download Sample</a>
+                    <a href="your-file.csv" class="file-btn"><i class="fas fa-file-csv"></i> Download CSV Sample</a>
+                </div>
+            </div>
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-info">
+                    <div class="project-tags"><span class="tag">Tools</span><span class="tag">System</span></div>
+                    <h3>Workflow Setup</h3>
+                    <p>Demonstration of setting up Trello boards and Notion workspaces for teams.</p>
+                    <a href="#" class="file-btn"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
                 </div>
             </div>
         </div>
@@ -372,47 +351,31 @@
     <section id="contact">
         <div class="contact-box" data-aos="zoom-out">
             <h2>Let's Work Together!</h2>
-            <p>I am currently open for new clients. Download my resume to see my full qualifications.</p>
+            <p>I am currently open for new clients and freelance opportunities. Download my resume to see my full qualifications.</p>
             
             <a href="your-resume.pdf" class="resume-btn" download><i class="fas fa-download"></i> Download My Resume</a>
 
             <div class="social-icons">
                 <a href="mailto:hazelespino45@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.facebook.com/hazel.espino.182" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fas fa-briefcase"></i></a>
-            </div>
+                <a href="#"><i class="https;//www.facebook.com/hazel.espino.182"></i></a>
+                <a href="#"><i class="fas fa-briefcase"></i></a> </div>
         </div>
     </section>
 
     <footer>
-        <p>© <span id="year"></span> HAZEL ESPINO. All rights reserved.</p>
+        <p>
+  © <span id="year"></span> HAZEL ESPINO. All rights reserved.
+</p>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // AOS Animation
-        AOS.init({ duration: 1000, once: true });
-
-        // Auto Year
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Hamburger Menu Logic
-        const menuBtn = document.getElementById('menuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close menu on click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-            });
+        AOS.init({
+            duration: 1000,
+            once: true
         });
     </script>
 </body>
